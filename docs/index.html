@@ -934,26 +934,97 @@
     /* Floating Sticky Mobile Bottom CTA Bar */
     .mobile-sticky-bar {
       position: fixed;
-      bottom: 14px;
-      inset-inline: 14px;
+      bottom: 12px;
+      inset-inline: 12px;
+      max-width: calc(100vw - 24px);
       z-index: 95;
-      background: rgba(14, 20, 34, 0.94);
+      background: rgba(14, 20, 34, 0.96);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border: 1.5px solid var(--accent);
       border-radius: 18px;
-      padding: 10px 14px;
+      padding: 8px 12px;
       display: none;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.75);
-      transform: translateY(130%);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.85);
+      transform: translateY(140%);
       transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .mobile-sticky-bar.visible {
       transform: translateY(0);
+    }
+
+    .sticky-info-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .sticky-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      box-shadow: none;
+      flex-shrink: 0;
+    }
+
+    .sticky-text-wrap {
+      min-width: 0;
+      flex: 1;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+    }
+
+    .sticky-title-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .sticky-app-name {
+      font-weight: 800;
+      font-size: 0.84rem;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    .sticky-ver-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #090D16;
+      background: var(--accent);
+      padding: 1px 6px;
+      border-radius: 999px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .sticky-sub-text {
+      font-size: 0.68rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 2px;
+    }
+
+    .sticky-download-btn {
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+      white-space: nowrap;
+      border-radius: 999px;
+      gap: 6px;
     }
 
     @media (max-width: 960px) {
@@ -1251,7 +1322,7 @@
               <polyline points="7 10 12 15 17 10"/>
               <line x1="12" y1="15" x2="12" y2="3"/>
             </svg>
-            <span data-i18n="trust_downloads">إجمالي التحميلات من GitHub: جاري التحديث...</span>
+            <span data-i18n="trust_downloads">إجمالي التحميلات الرسمية: موثّق على GitHub</span>
           </span>
         </div>
       </div>
@@ -1699,7 +1770,7 @@
               <polyline points="7 10 12 15 17 10"/>
               <line x1="12" y1="15" x2="12" y2="3"/>
             </svg>
-            <span data-i18n="qr_downloads">إجمالي مرات التنزيل: جاري الحساب...</span>
+            <span data-i18n="qr_downloads">إجمالي التنزيلات: موثّق على GitHub</span>
           </div>
           <div class="sha-box" id="release-path-box">
             Release: github.com/Mohamedredaaa/mo-alarm/releases/latest
@@ -1860,24 +1931,27 @@
 
   <!-- Floating Mobile Sticky Download Bar -->
   <div class="mobile-sticky-bar" id="mobile-sticky-bar">
-    <div style="display:flex; align-items:center; gap:10px; min-width:0;">
-      <div class="brand-icon" style="width:36px; height:36px; border-radius:10px; box-shadow:none;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <div class="sticky-info-group">
+      <div class="brand-icon sticky-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <div style="min-width:0;">
-        <div style="font-weight:800; font-size:0.86rem; color:var(--text-primary); white-space:nowrap;" id="sticky-bar-title">Mo Alarm v1.4.1</div>
-        <div style="font-size:0.72rem; color:var(--text-secondary); white-space:nowrap;" data-i18n="sticky_sub">مجاني ١٠٠٪ • بدون إعلانات</div>
+      <div class="sticky-text-wrap">
+        <div class="sticky-title-row">
+          <span class="sticky-app-name">Mo Alarm</span>
+          <span class="sticky-ver-badge" id="sticky-ver-tag">v1.4.1</span>
+        </div>
+        <div class="sticky-sub-text" id="sticky-sub-meta" data-i18n="sticky_sub">مجاني ١٠٠٪ • بدون إعلانات</div>
       </div>
     </div>
-    <a class="nav-cta" data-apk-link href="https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/app-release.apk" style="padding:9px 15px; font-size:0.8rem; flex-shrink:0;">
+    <a class="nav-cta sticky-download-btn" data-apk-link href="https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/app-release.apk">
       <svg class="ico-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
         <polyline points="7 10 12 15 17 10"/>
         <line x1="12" y1="15" x2="12" y2="3"/>
       </svg>
-      <span data-i18n="sticky_btn">تحميل مباشر</span>
+      <span data-i18n="sticky_btn">تحميل</span>
     </a>
   </div>
 
@@ -1910,7 +1984,7 @@
         trust_1: 'خصوصية ١٠٠٪ ومتوافق مع InstaPay',
         trust_2: 'دعم شاشات 120Hz وويدجت القفل',
         trust_3: '٢٩٢ مؤذناً و١٢١ ذكراً موثّقاً',
-        trust_downloads: 'إجمالي التحميلات من GitHub: جاري التحديث...',
+        trust_downloads: 'إجمالي التحميلات الرسمية: موثّق على GitHub',
         mock_loc: 'القاهرة • هيئة المساحة',
         mock_next_lbl: 'الصلاة القادمة • الفجر',
         mock_fajr_time: '٠٤:١٨ ص',
@@ -2015,7 +2089,7 @@
         dl_btn_rel: 'صفحة الإصدار على GitHub',
         qr_title: 'امسح الرمز للتحميل من الهاتف',
         qr_meta: 'الإصدار: <strong>v1.4.1</strong> • Android 8.0+',
-        qr_downloads: 'إجمالي التنزيلات: جاري الجلب من GitHub...',
+        qr_downloads: 'إجمالي التنزيلات: موثّق على GitHub',
         cl_title: 'أبرز تحديثات آخر إصدار (مزامنة تلقائية من GitHub)',
         cl_item_1: 'كتم فوري للأذان والمنبّه بقلب الهاتف (0ms) أو أزرار الصوت والباور حتى والشاشة مغلقة.',
         cl_item_2: 'مركز إشعارات نشطة داخل التطبيق وإشعار تلقائي عند توفر تحديث جديد بضغطة واحدة.',
@@ -2032,7 +2106,7 @@
         faq_q4: 'كيف أحصل على التحديثات الجديدة مستقبلاً؟',
         faq_a4: 'يحتوي التطبيق على نظام تحديث داخلي تلقائي يعرض لك نافذة عند صدور أي إصدار جديد لتحميله وتثبيته مباشرة، كما أن هذه الصفحة تتحدث تلقائياً بآخر إصدار من GitHub.',
         sticky_sub: 'مجاني ١٠٠٪ • بدون إعلانات',
-        sticky_btn: 'تحميل مباشر',
+        sticky_btn: 'تحميل',
         contact_tag: 'تطوير: م. محمد رضا عامر (Mohamed Reda Amer)',
         contact_title: 'تواصل معي مباشرةً',
         contact_sub: 'يسعدني دائماً استقبال اقتراحاتكم لتطوير التطبيق، أو الإبلاغ عن أي ملاحظة، أو التواصل المهني والتعاون في المشاريع البرمجية والذكاء الاصطناعي.',
@@ -2062,7 +2136,7 @@
         trust_1: '100% Private & InstaPay Compatible',
         trust_2: '120Hz UI & Lock-Screen Widgets',
         trust_3: '292 Adhan Voices & 121 Authentic Adhkar',
-        trust_downloads: 'Official GitHub Downloads: Syncing live...',
+        trust_downloads: 'Official Downloads: Verified on GitHub',
         mock_loc: 'Cairo • Egyptian Survey',
         mock_next_lbl: 'Next Prayer • Fajr',
         mock_fajr_time: '04:18 AM',
@@ -2167,7 +2241,7 @@
         dl_btn_rel: 'View Release on GitHub',
         qr_title: 'Scan QR Code with Your Phone',
         qr_meta: 'Version: <strong>v1.4.1</strong> • Android 8.0+',
-        qr_downloads: 'Total GitHub Downloads: Syncing live...',
+        qr_downloads: 'Total Downloads: Verified on GitHub',
         cl_title: 'What\'s New in Latest Release (Auto-Synced from GitHub)',
         cl_item_1: 'Instant 0ms Flip-to-Mute and Power/Volume key mute for Adhan, Iqamah, and Alarms even when screen is off.',
         cl_item_2: 'In-App Active Notifications Center and automatic one-tap New Update Available modal dialog.',
@@ -2184,7 +2258,7 @@
         faq_q4: 'How do I get future app updates?',
         faq_a4: 'Mo Alarm includes a built-in auto-updater that notifies you whenever a new release is published on GitHub, and this landing page automatically syncs with the latest release.',
         sticky_sub: '100% Free • Zero Ads',
-        sticky_btn: 'Download APK',
+        sticky_btn: 'Download',
         contact_tag: 'Developed by Eng. Mohamed Reda Amer',
         contact_title: 'Get in Touch Directly',
         contact_sub: 'I always welcome your feature suggestions, bug reports, or professional inquiries regarding software engineering, data solutions, and AI projects.',
@@ -2264,97 +2338,146 @@
       }
     })();
 
-    // Auto-sync latest version, APK size, download URL, total downloads across all releases, and release date from GitHub Releases API
+    function applyReleaseData(data) {
+      if (!data) return;
+      const tag = data.tag || 'v1.4.1';
+      const sizeMB = data.sizeMB || '17.0 MB';
+      const totalDownloads = data.totalDownloads || 0;
+      const latestDownloads = data.latestDownloads || 0;
+      const apkUrl = data.apkUrl || 'https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/app-release.apk';
+      const releaseUrl = data.releaseUrl || ('https://github.com/Mohamedredaaa/mo-alarm/releases/tag/' + tag);
+
+      document.querySelectorAll('[data-apk-link]').forEach(el => { el.href = apkUrl; });
+      document.querySelectorAll('[data-release-link]').forEach(el => { el.href = releaseUrl; });
+
+      const totalAr = totalDownloads.toLocaleString('ar-EG');
+      const latestAr = latestDownloads.toLocaleString('ar-EG');
+      const totalEn = totalDownloads.toLocaleString('en-US');
+      const latestEn = latestDownloads.toLocaleString('en-US');
+
+      i18n.ar.hero_badge = `الإصدار الرسمي ${tag} • بدون إعلانات • بدون إنترنت`;
+      i18n.ar.cta_primary = `تحميل مباشر للأندرويد (APK • ${sizeMB})`;
+      if (totalDownloads > 0) {
+        i18n.ar.trust_downloads = `إجمالي التحميلات الرسمية: ${totalAr} تنزيل (${latestAr} للإصدار ${tag})`;
+        i18n.ar.qr_downloads = `إجمالي التنزيلات: <strong>${totalAr}</strong> (${latestAr} لآخر إصدار)`;
+        i18n.en.trust_downloads = `Official Downloads: ${totalEn} total (${latestEn} on ${tag})`;
+        i18n.en.qr_downloads = `Total Downloads: <strong>${totalEn}</strong> (${latestEn} on latest)`;
+      }
+      i18n.ar.feat_tag = `الإصدار ${tag} • ٦ منظومات ذكية`;
+      i18n.ar.cmp_r3_c2 = `✓ مدعوم بالكامل في الإصدار ${tag}`;
+      i18n.ar.dl_btn_apk = `تنزيل الإصدار ${tag} (app-release.apk)`;
+      i18n.ar.qr_meta = `الإصدار: <strong>${tag}</strong> • Android 8.0+`;
+      i18n.ar.sticky_sub = `${sizeMB} • مجاني ١٠٠٪`;
+
+      i18n.en.hero_badge = `Official ${tag} • 100% Ad-Free • Works Offline`;
+      i18n.en.cta_primary = `Direct Android Download (APK • ${sizeMB})`;
+      i18n.en.feat_tag = `Release ${tag} • 6 Smart Worship Systems`;
+      i18n.en.cmp_r3_c2 = `✓ Fully supported in ${tag}`;
+      i18n.en.dl_btn_apk = `Download Release ${tag} (app-release.apk)`;
+      i18n.en.qr_meta = `Version: <strong>${tag}</strong> • Android 8.0+`;
+      i18n.en.sticky_sub = `${sizeMB} • 100% Free`;
+
+      const mockVer = document.getElementById('mock-version-label');
+      if (mockVer) mockVer.textContent = `Mo Alarm ${tag}`;
+      const stickyVer = document.getElementById('sticky-ver-tag');
+      if (stickyVer) stickyVer.textContent = tag;
+      const relBox = document.getElementById('release-path-box');
+      if (relBox) relBox.textContent = `Release: github.com/Mohamedredaaa/mo-alarm/releases/tag/${tag}`;
+      document.title = `Mo Alarm | مؤذّن ومنبّه الفجر الذكي — الإصدار الرسمي ${tag}`;
+
+      if (data.publishedAt) {
+        const dateEl = document.getElementById('live-release-date');
+        if (dateEl) {
+          const d = new Date(data.publishedAt);
+          dateEl.textContent = `${tag} • ${d.toISOString().slice(0, 10)}`;
+        }
+      }
+
+      applyLanguage(isEnglish ? 'en' : 'ar');
+    }
+
+    // Auto-sync latest version, APK size, download URL, total downloads across all releases, and release date
     async function syncLatestRelease() {
+      // 1. Instant load from localStorage cache
       try {
-        const res = await fetch('https://api.github.com/repos/Mohamedredaaa/mo-alarm/releases?per_page=100&t=' + Date.now(), {
-          cache: 'no-store',
+        const cached = localStorage.getItem('mo_alarm_release_cache');
+        if (cached) {
+          applyReleaseData(JSON.parse(cached));
+        }
+      } catch (e) {}
+
+      let data = {
+        tag: 'v1.4.1',
+        sizeMB: '17.0 MB',
+        totalDownloads: 0,
+        latestDownloads: 0,
+        apkUrl: 'https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/app-release.apk',
+        releaseUrl: 'https://github.com/Mohamedredaaa/mo-alarm/releases/latest',
+        publishedAt: null
+      };
+      let fetchedFromGitHub = false;
+
+      // 2. Fetch from GitHub Releases API
+      try {
+        const res = await fetch('https://api.github.com/repos/Mohamedredaaa/mo-alarm/releases?per_page=100', {
           headers: { 'Accept': 'application/vnd.github+json' }
         });
-        if (!res.ok) return;
-        const releases = await res.json();
-        if (!Array.isArray(releases) || releases.length === 0) return;
-
-        // Calculate total download_count across all releases (100% privacy-preserving)
-        let totalDownloads = 0;
-        releases.forEach(rel => {
-          if (Array.isArray(rel.assets)) {
-            rel.assets.forEach(asset => {
-              totalDownloads += Number(asset.download_count || 0);
+        if (res.ok) {
+          const releases = await res.json();
+          if (Array.isArray(releases) && releases.length > 0) {
+            let total = 0;
+            releases.forEach(rel => {
+              if (Array.isArray(rel.assets)) {
+                rel.assets.forEach(asset => {
+                  total += Number(asset.download_count || 0);
+                });
+              }
             });
-          }
-        });
-
-        const release = releases.find(r => !r.draft && !r.prerelease) || releases[0];
-        const tag = release.tag_name;
-        if (!tag) return;
-
-        const assets = Array.isArray(release.assets) ? release.assets : [];
-        const apkAsset = assets.find(a => a.name && a.name.endsWith('.apk')) || assets[0];
-        const latestDownloads = apkAsset ? Number(apkAsset.download_count || 0) : 0;
-        const apkUrl = (apkAsset && apkAsset.browser_download_url)
-          ? apkAsset.browser_download_url
-          : 'https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/app-release.apk';
-        const sizeMB = (apkAsset && apkAsset.size)
-          ? (apkAsset.size / (1024 * 1024)).toFixed(1) + ' MB'
-          : '17.0 MB';
-        const releaseUrl = release.html_url || ('https://github.com/Mohamedredaaa/mo-alarm/releases/tag/' + tag);
-
-        // Update all APK and Release links on page
-        document.querySelectorAll('[data-apk-link]').forEach(el => { el.href = apkUrl; });
-        document.querySelectorAll('[data-release-link]').forEach(el => { el.href = releaseUrl; });
-
-        const totalAr = totalDownloads.toLocaleString('ar-EG');
-        const latestAr = latestDownloads.toLocaleString('ar-EG');
-        const totalEn = totalDownloads.toLocaleString('en-US');
-        const latestEn = latestDownloads.toLocaleString('en-US');
-
-        // Update dynamic version and download count texts in i18n dictionary for both languages
-        i18n.ar.hero_badge = `الإصدار الرسمي ${tag} • بدون إعلانات • بدون إنترنت`;
-        i18n.ar.cta_primary = `تحميل مباشر للأندرويد (APK • ${sizeMB})`;
-        i18n.ar.trust_downloads = `إجمالي التحميلات الرسمية: ${totalAr} تنزيل (${latestAr} للإصدار ${tag})`;
-        i18n.ar.feat_tag = `الإصدار ${tag} • ٦ منظومات ذكية`;
-        i18n.ar.cmp_r3_c2 = `✓ مدعوم بالكامل في الإصدار ${tag}`;
-        i18n.ar.dl_btn_apk = `تنزيل الإصدار ${tag} (app-release.apk)`;
-        i18n.ar.qr_meta = `الإصدار: <strong>${tag}</strong> • Android 8.0+`;
-        i18n.ar.qr_downloads = `إجمالي التنزيلات: <strong>${totalAr}</strong> (${latestAr} لآخر إصدار)`;
-
-        i18n.en.hero_badge = `Official ${tag} • 100% Ad-Free • Works Offline`;
-        i18n.en.cta_primary = `Direct Android Download (APK • ${sizeMB})`;
-        i18n.en.trust_downloads = `Official Downloads: ${totalEn} total (${latestEn} on ${tag})`;
-        i18n.en.feat_tag = `Release ${tag} • 6 Smart Worship Systems`;
-        i18n.en.cmp_r3_c2 = `✓ Fully supported in ${tag}`;
-        i18n.en.dl_btn_apk = `Download Release ${tag} (app-release.apk)`;
-        i18n.en.qr_meta = `Version: <strong>${tag}</strong> • Android 8.0+`;
-        i18n.en.qr_downloads = `Total Downloads: <strong>${totalEn}</strong> (${latestEn} on latest)`;
-
-        // Update phone mockup header, sticky bar, page title, and release path box
-        const mockVer = document.getElementById('mock-version-label');
-        if (mockVer) mockVer.textContent = `Mo Alarm ${tag}`;
-        const stickyTitle = document.getElementById('sticky-bar-title');
-        if (stickyTitle) stickyTitle.textContent = `Mo Alarm ${tag} • ${sizeMB}`;
-        const relBox = document.getElementById('release-path-box');
-        if (relBox) relBox.textContent = `Release: github.com/Mohamedredaaa/mo-alarm/releases/tag/${tag}`;
-        document.title = `Mo Alarm | مؤذّن ومنبّه الفجر الذكي — الإصدار الرسمي ${tag}`;
-
-        if (release.published_at) {
-          const dateEl = document.getElementById('live-release-date');
-          if (dateEl) {
-            const d = new Date(release.published_at);
-            dateEl.textContent = `${tag} • ${d.toISOString().slice(0, 10)}`;
+            const release = releases.find(r => !r.draft && !r.prerelease) || releases[0];
+            if (release && release.tag_name) {
+              data.tag = release.tag_name;
+              data.publishedAt = release.published_at;
+              const assets = Array.isArray(release.assets) ? release.assets : [];
+              const apkAsset = assets.find(a => a.name && a.name.endsWith('.apk')) || assets[0];
+              if (apkAsset) {
+                data.latestDownloads = Number(apkAsset.download_count || 0);
+                if (apkAsset.browser_download_url) data.apkUrl = apkAsset.browser_download_url;
+                if (apkAsset.size) data.sizeMB = (apkAsset.size / (1024 * 1024)).toFixed(1) + ' MB';
+              }
+              data.releaseUrl = release.html_url || ('https://github.com/Mohamedredaaa/mo-alarm/releases/tag/' + data.tag);
+              data.totalDownloads = total;
+              fetchedFromGitHub = true;
+            }
           }
         }
+      } catch (e) {}
 
-        applyLanguage(isEnglish ? 'en' : 'ar');
+      // 3. Fallback to Shields.io if GitHub API is rate-limited (HTTP 403) or offline
+      if (!fetchedFromGitHub || data.totalDownloads === 0) {
+        try {
+          const sRes = await fetch('https://img.shields.io/github/downloads/Mohamedredaaa/mo-alarm/total.json');
+          if (sRes.ok) {
+            const sData = await sRes.json();
+            const count = parseInt(sData.value || sData.message, 10);
+            if (!isNaN(count) && count > 0) {
+              data.totalDownloads = count;
+              if (data.latestDownloads === 0) data.latestDownloads = count;
+            }
+          }
+        } catch (e) {}
+      }
+
+      // 4. Apply freshly fetched data and save to cache
+      applyReleaseData(data);
+      try {
+        localStorage.setItem('mo_alarm_release_cache', JSON.stringify(data));
       } catch (e) {}
     }
 
     syncLatestRelease();
-    setInterval(syncLatestRelease, 25000);
     document.querySelectorAll('[data-apk-link]').forEach(btn => {
       btn.addEventListener('click', () => {
-        setTimeout(syncLatestRelease, 4500);
-        setTimeout(syncLatestRelease, 10000);
+        setTimeout(syncLatestRelease, 4000);
       });
     });
 
