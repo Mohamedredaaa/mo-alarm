@@ -1,17 +1,25 @@
 # Mo Alarm — مؤذّن ومنبّه الفجر الذكي
 
-Official download page and release channel for **Mo Alarm**, a free, ad-free Android prayer-times and Fajr wake-up app.
+Official download page and release channel for **Mo Alarm**, a free, ad-free Android & iPhone (iOS) prayer-times and Fajr wake-up app.
 
-- **Website:** https://mohamedredaaa.github.io/mo-alarm/
-- **Latest APK:** https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/app-release.apk
-- **All releases:** https://github.com/Mohamedredaaa/mo-alarm/releases
+- **Website (صفحة التحميل الرسمية):** https://mohamedredaaa.github.io/mo-alarm/
+- **Latest Android APK (1.4.2):** https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/app-release.apk
+- **Latest iPhone IPA (1.4.2 — iOS 17+):** https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/MoAlarm-iOS-v1.4.2.ipa
+- **All Public Releases:** https://github.com/Mohamedredaaa/mo-alarm/releases
+
+## Install on iPhone for Free (التثبيت على الأيفون مجاناً)
+
+1. Download **MoAlarm-iOS-v1.4.2.ipa** from the link above or the [v1.4.2 Release page](https://github.com/Mohamedredaaa/mo-alarm/releases/tag/v1.4.2).
+2. Open [**Sideloadly**](https://sideloadly.io) (Windows / macOS) or [**AltStore / SideStore**](https://altstore.io), connect your iPhone, and drag the .ipa file using your free Apple ID.
+3. On your iPhone, open **Settings → General → VPN & Device Management**, tap **Trust** on your Apple ID, and enable **Developer Mode** (iOS 17+).
 
 ## Highlights
 
-- Offline astronomical prayer times and Qibla compass
-- Fajr alarm with 4 wake-up challenges
-- 292 Adhan voices and 121 Adhkar
-- Mosque auto-silent, flip-to-mute, no ads, no tracking
+- Offline astronomical prayer times (including Sunrise & Egypt DST) and Qibla compass
+- Fajr alarm with 4 wake-up challenges & 5-minute post-Fajr awake check
+- Bundled Adhan, Dua after Adhan, 4 Iqamah voices, and 580+ downloadable Adhans
+- 120 authentic categorized Adhkar + 25-phrase non-repeating Digital Tasbih
+- Mosque auto-silent, Jumu'ah smart mode, Sunnah fasting & Auto-Suhoor, flip-to-mute, no ads, no tracking
 
 ## Support & contact
 
