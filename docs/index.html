@@ -934,26 +934,97 @@
     /* Floating Sticky Mobile Bottom CTA Bar */
     .mobile-sticky-bar {
       position: fixed;
-      bottom: 14px;
-      inset-inline: 14px;
+      bottom: 12px;
+      inset-inline: 12px;
+      max-width: calc(100vw - 24px);
       z-index: 95;
-      background: rgba(14, 20, 34, 0.94);
+      background: rgba(14, 20, 34, 0.96);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border: 1.5px solid var(--accent);
       border-radius: 18px;
-      padding: 10px 14px;
+      padding: 8px 12px;
       display: none;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.75);
-      transform: translateY(130%);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.85);
+      transform: translateY(140%);
       transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .mobile-sticky-bar.visible {
       transform: translateY(0);
+    }
+
+    .sticky-info-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .sticky-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      box-shadow: none;
+      flex-shrink: 0;
+    }
+
+    .sticky-text-wrap {
+      min-width: 0;
+      flex: 1;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+    }
+
+    .sticky-title-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .sticky-app-name {
+      font-weight: 800;
+      font-size: 0.84rem;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    .sticky-ver-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #090D16;
+      background: var(--accent);
+      padding: 1px 6px;
+      border-radius: 999px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .sticky-sub-text {
+      font-size: 0.68rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 2px;
+    }
+
+    .sticky-download-btn {
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+      white-space: nowrap;
+      border-radius: 999px;
+      gap: 6px;
     }
 
     @media (max-width: 960px) {
@@ -1133,6 +1204,178 @@
         padding-bottom: 96px;
       }
     }
+
+    /* Platform Chooser Modal (Android APK vs iPhone IPA) */
+    .dl-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(5, 8, 15, 0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .dl-modal-backdrop.open {
+      display: flex;
+      opacity: 1;
+    }
+    .dl-modal-card {
+      width: 100%;
+      max-width: 610px;
+      background: linear-gradient(165deg, #121928 0%, #0B0F19 100%);
+      border: 1px solid rgba(212, 175, 55, 0.38);
+      border-radius: 26px;
+      padding: 28px 26px 24px;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.72), 0 0 40px rgba(212, 175, 55, 0.12);
+      position: relative;
+      max-height: 92vh;
+      overflow-y: auto;
+    }
+    .dl-modal-close {
+      position: absolute;
+      top: 18px;
+      inset-inline-end: 18px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      line-height: 1;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.18s ease;
+    }
+    .dl-modal-close:hover {
+      background: rgba(212, 175, 55, 0.18);
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .dl-platform-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .dl-platform-option {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      position: relative;
+    }
+    .dl-platform-option:hover,
+    .dl-platform-option.recommended {
+      border-color: rgba(212, 175, 55, 0.55);
+      background: rgba(212, 175, 55, 0.06);
+      transform: translateY(-2px);
+    }
+    .dl-detected-pill {
+      display: none;
+      align-self: flex-start;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.16);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34D399;
+    }
+    .dl-platform-option.recommended .dl-detected-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .dl-platform-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .dl-platform-icon.android {
+      background: rgba(16, 185, 129, 0.14);
+      color: #34D399;
+      border: 1px solid rgba(16, 185, 129, 0.32);
+    }
+    .dl-platform-icon.ios {
+      background: rgba(212, 175, 55, 0.14);
+      color: #FDE68A;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+    }
+    .dl-platform-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .dl-platform-btn.android {
+      background: linear-gradient(135deg, #10B981, #059669);
+      color: #06130E;
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.25);
+    }
+    .dl-platform-btn.ios {
+      background: linear-gradient(135deg, var(--accent), #B8860B);
+      color: #090D16;
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.25);
+    }
+    .dl-platform-btn:hover {
+      transform: translateY(-1px);
+    }
+    .qr-platform-switch {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      padding: 3px;
+      gap: 4px;
+      margin-bottom: 12px;
+    }
+    .qr-switch-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: var(--font-sans);
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+    .qr-switch-btn.active {
+      background: var(--accent);
+      color: #090D16;
+    }
+    @media (max-width: 600px) {
+      .dl-platform-grid {
+        grid-template-columns: 1fr;
+      }
+      .dl-modal-card {
+        padding: 22px 18px 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1173,14 +1416,14 @@
           <span id="lang-btn-label">English</span>
         </button>
 
-        <a class="nav-cta" data-apk-link href="https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/app-release.apk">
+        <button class="nav-cta" type="button" onclick="openDownloadModal(event)" style="border:none; cursor:pointer; font-family:var(--font-sans);">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
             <polyline points="7 10 12 15 17 10"/>
             <line x1="12" y1="15" x2="12" y2="3"/>
           </svg>
-          <span data-i18n="nav_download">تحميل APK</span>
-        </a>
+          <span data-i18n="nav_download">تحميل التطبيق</span>
+        </button>
       </div>
     </header>
   </div>
@@ -1205,19 +1448,12 @@
         </p>
 
         <div class="hero-actions">
-          <a class="btn-primary-download" data-apk-link href="https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/app-release.apk">
+          <button class="btn-primary-download" type="button" onclick="openDownloadModal(event)" style="border:none; cursor:pointer; font-family:var(--font-sans);">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span data-i18n="cta_primary">تحميل مباشر للأندرويد (APK • 17.0 MB)</span>
-          </a>
-
-          <a class="btn-secondary-action" data-ipa-link href="https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/MoAlarm-iOS-v1.4.2.ipa" style="border-color: rgba(212, 175, 55, 0.55); background: rgba(212, 175, 55, 0.10);">
-            <svg class="ico" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.33c.64-.78 1.08-1.86.96-2.94-.93.04-2.06.62-2.72 1.4-.58.68-1.1 1.79-.96 2.84 1.04.08 2.08-.52 2.72-1.3z"/>
-            </svg>
-            <span data-i18n="cta_ios">تحميل للأيفون (iOS .ipa • مجاناً)</span>
-          </a>
+            <span data-i18n="cta_primary">تحميل التطبيق مجاناً (أندرويد &amp; أيفون)</span>
+          </button>
 
           <button class="btn-secondary-action" onclick="shareApp()" type="button">
             <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1258,7 +1494,7 @@
               <polyline points="7 10 12 15 17 10"/>
               <line x1="12" y1="15" x2="12" y2="3"/>
             </svg>
-            <span data-i18n="trust_downloads">إجمالي التحميلات من GitHub: جاري التحديث...</span>
+            <span data-i18n="trust_downloads">إجمالي التحميلات الرسمية: موثّق على GitHub</span>
           </span>
         </div>
       </div>
@@ -1648,20 +1884,14 @@
           </div>
 
           <div class="hero-actions" style="margin-top:28px; margin-bottom:0;">
-            <a class="btn-primary-download" data-apk-link href="https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/app-release.apk">
+            <button class="btn-primary-download" type="button" onclick="openDownloadModal(event)" style="border:none; cursor:pointer; font-family:var(--font-sans);">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                 <polyline points="7 10 12 15 17 10"/>
                 <line x1="12" y1="15" x2="12" y2="3"/>
               </svg>
-              <span data-i18n="dl_btn_apk">تنزيل الإصدار v1.4.2 (app-release.apk)</span>
-            </a>
-            <a class="btn-secondary-action" data-ipa-link href="https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/MoAlarm-iOS-v1.4.2.ipa" style="border-color: rgba(212, 175, 55, 0.55); background: rgba(212, 175, 55, 0.10);">
-              <svg class="ico" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.33c.64-.78 1.08-1.86.96-2.94-.93.04-2.06.62-2.72 1.4-.58.68-1.1 1.79-.96 2.84 1.04.08 2.08-.52 2.72-1.3z"/>
-              </svg>
-              <span data-i18n="dl_btn_ipa">تنزيل نسخة الأيفون (MoAlarm-iOS-v1.4.2.ipa)</span>
-            </a>
+              <span data-i18n="dl_btn_choose">اختر نسختك وحمّل الآن (أندرويد / أيفون)</span>
+            </button>
             <a class="btn-secondary-action" data-release-link href="https://github.com/Mohamedredaaa/mo-alarm/releases/latest" target="_blank" rel="noopener">
               <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
@@ -1676,13 +1906,13 @@
           <div class="changelog-box" id="iphone-install-guide" style="margin-top:20px; border-color: rgba(212, 175, 55, 0.4);">
             <div class="changelog-header">
               <span style="display:inline-flex; align-items:center; gap:7px; color: var(--accent);">
-                <svg class="ico-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83"/></svg>
+                <svg class="ico-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.33c.64-.78 1.08-1.86.96-2.94-.93.04-2.06.62-2.72 1.4-.58.68-1.1 1.79-.96 2.84 1.04.08 2.08-.52 2.72-1.3z"/></svg>
                 <span data-i18n="ios_guide_title">طريقة التثبيت على الأيفون مجاناً (iOS 17+ — ملف .ipa عبر Sideloadly أو AltStore)</span>
               </span>
               <span style="font-size:0.75rem; color:var(--accent-2); font-weight:700;">iOS 17+ • Free</span>
             </div>
             <ul class="changelog-list">
-              <li data-i18n="ios_step_1"><strong>١. حمّل ملف الأيفون:</strong> اضغط على زر <code>MoAlarm-iOS-v1.4.2.ipa</code> أعلاه لحفظ ملف التطبيق.</li>
+              <li data-i18n="ios_step_1"><strong>١. حمّل نسخة الأيفون:</strong> اضغط على زر التحميل واختر <strong>نسخة الأيفون (iOS .ipa)</strong> لحفظ آخر إصدار تلقائياً.</li>
               <li data-i18n="ios_step_2"><strong>٢. ثبّت عبر Sideloadly أو AltStore / SideStore (مجاناً):</strong> افتح برنامج <a href="https://sideloadly.io" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:underline;">Sideloadly</a> (ويندوز/ماك) أو <a href="https://altstore.io" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:underline;">AltStore</a>، وصّل الأيفون، واسحب ملف <code>.ipa</code> مع إدخال حساب Apple ID العادي (المجاني).</li>
               <li data-i18n="ios_step_3"><strong>٣. وثّق الشهادة على الأيفون:</strong> افتح <code>الإعدادات ← عام ← VPN وإدارة الجهاز</code> (Settings → General → VPN &amp; Device Management) واضغط <strong>الوثوق (Trust)</strong>، مع تفعيل <code>وضع المطور (Developer Mode)</code> في iOS 17+.</li>
             </ul>
@@ -1709,7 +1939,12 @@
           <div style="font-weight:800; font-size:1.05rem; margin-bottom:10px; color:var(--accent);" data-i18n="qr_title">
             امسح الرمز للتحميل من الهاتف
           </div>
-          <a data-apk-link href="https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/app-release.apk" title="Direct APK Download">
+          <div class="qr-platform-switch" role="tablist">
+            <button type="button" class="qr-switch-btn active" id="qr-btn-android" onclick="setQrPlatform('android')" data-i18n="qr_tab_android">أندرويد (APK)</button>
+            <button type="button" class="qr-switch-btn" id="qr-btn-ios" onclick="setQrPlatform('ios')" data-i18n="qr_tab_ios">أيفون (iOS)</button>
+          </div>
+          <br/>
+          <a id="qr-code-link" data-apk-link href="https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/app-release.apk" title="Direct Download">
             <img
               id="qr-code-img"
               src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&bgcolor=0B0F17&color=D4AF37&data=https%3A%2F%2Fgithub.com%2FMohamedredaaa%2Fmo-alarm%2Freleases%2Flatest%2Fdownload%2Fapp-release.apk"
@@ -1719,8 +1954,8 @@
               style="border-radius:16px; border:2px solid var(--border); padding:8px; background:#0B0F17;"
             />
           </a>
-          <div style="font-size:0.82rem; color:var(--text-secondary); margin-top:10px;" data-i18n="qr_meta">
-            الإصدار: <strong>v1.4.2</strong> • Android 8.0+
+          <div style="font-size:0.82rem; color:var(--text-secondary); margin-top:10px;" id="qr-meta-label" data-i18n="qr_meta">
+            الإصدار: <strong>v1.4.2</strong> • Android 8.0+ &amp; iOS 17+
           </div>
           <div style="margin-top:10px; padding:8px 12px; border-radius:10px; background:rgba(16, 185, 129, 0.12); border:1px solid rgba(16, 185, 129, 0.32); color:#34D399; font-size:0.8rem; font-weight:700; display:inline-flex; align-items:center; gap:6px;">
             <svg class="ico-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1728,7 +1963,7 @@
               <polyline points="7 10 12 15 17 10"/>
               <line x1="12" y1="15" x2="12" y2="3"/>
             </svg>
-            <span data-i18n="qr_downloads">إجمالي مرات التنزيل: جاري الحساب...</span>
+            <span data-i18n="qr_downloads">إجمالي التنزيلات: موثّق على GitHub</span>
           </div>
           <div class="sha-box" id="release-path-box">
             Release: github.com/Mohamedredaaa/mo-alarm/releases/latest
@@ -1754,7 +1989,7 @@
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
           <div class="faq-answer" data-i18n="faq_a1">
-            نعم ١٠٠٪. تطبيق Mo Alarm مفتوح المصدر بالكامل على GitHub، ولا يستخدم خدمات تسهيلات الاستخدام (Accessibility Services) التي ترفضها التطبيقات البنكية مثل InstaPay، ولا يجمع أي بيانات شخصية.
+            نعم ١٠٠٪. تطبيق Mo Alarm مجاني بالكامل ويُوزَّع رسمياً عبر GitHub Releases، ولا يستخدم خدمات تسهيلات الاستخدام (Accessibility Services) التي ترفضها التطبيقات البنكية مثل InstaPay، ولا يجمع أي بيانات شخصية.
           </div>
         </details>
 
@@ -1868,7 +2103,7 @@
         Mo Alarm — مؤذّن ومنبّه الفجر الذكي
       </p>
       <p data-i18n="footer_sub">
-        مفتوح المصدر ومجاني بالكامل لوجه الله • تطوير م. محمد رضا عامر © 2026
+        مجاني بالكامل لوجه الله • تطوير م. محمد رضا عامر © 2026
       </p>
       <div class="footer-social-row">
         <a class="footer-social-pill" href="https://www.linkedin.com/in/mohamed-amer-2b5754190/" target="_blank" rel="noopener">
@@ -1889,25 +2124,99 @@
 
   <!-- Floating Mobile Sticky Download Bar -->
   <div class="mobile-sticky-bar" id="mobile-sticky-bar">
-    <div style="display:flex; align-items:center; gap:10px; min-width:0;">
-      <div class="brand-icon" style="width:36px; height:36px; border-radius:10px; box-shadow:none;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <div class="sticky-info-group">
+      <div class="brand-icon sticky-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <div style="min-width:0;">
-        <div style="font-weight:800; font-size:0.86rem; color:var(--text-primary); white-space:nowrap;" id="sticky-bar-title">Mo Alarm v1.4.2</div>
-        <div style="font-size:0.72rem; color:var(--text-secondary); white-space:nowrap;" data-i18n="sticky_sub">مجاني ١٠٠٪ • بدون إعلانات</div>
+      <div class="sticky-text-wrap">
+        <div class="sticky-title-row">
+          <span class="sticky-app-name">Mo Alarm</span>
+          <span class="sticky-ver-badge" id="sticky-ver-tag">v1.4.2</span>
+        </div>
+        <div class="sticky-sub-text" id="sticky-sub-meta" data-i18n="sticky_sub">أندرويد &amp; أيفون • مجاني ١٠٠٪</div>
       </div>
     </div>
-    <a class="nav-cta" data-apk-link href="https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/app-release.apk" style="padding:9px 15px; font-size:0.8rem; flex-shrink:0;">
+    <button class="nav-cta sticky-download-btn" type="button" onclick="openDownloadModal(event)" style="border:none; cursor:pointer; font-family:var(--font-sans);">
       <svg class="ico-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
         <polyline points="7 10 12 15 17 10"/>
         <line x1="12" y1="15" x2="12" y2="3"/>
       </svg>
-      <span data-i18n="sticky_btn">تحميل مباشر</span>
-    </a>
+      <span data-i18n="sticky_btn">تحميل</span>
+    </button>
+  </div>
+
+  <!-- Platform Chooser Modal (Android APK vs iPhone iOS IPA) -->
+  <div class="dl-modal-backdrop" id="download-platform-modal" onclick="handleModalBackdropClick(event)" role="dialog" aria-modal="true" aria-labelledby="dl-modal-title">
+    <div class="dl-modal-card">
+      <button type="button" class="dl-modal-close" onclick="closeDownloadModal()" aria-label="Close">&times;</button>
+      <div style="display:inline-flex; align-items:center; gap:8px; padding:5px 12px; border-radius:999px; background:var(--accent-soft); border:1px solid var(--border); color:var(--accent); font-size:0.78rem; font-weight:800; margin-bottom:10px;">
+        <span id="modal-live-tag">v1.4.2</span>
+        <span>•</span>
+        <span data-i18n="modal_badge">تحديث تلقائي لآخر إصدار رسمي</span>
+      </div>
+      <h3 id="dl-modal-title" style="font-family:var(--font-display); font-size:1.45rem; font-weight:900; margin-bottom:6px;" data-i18n="modal_title">
+        اختر نوع هاتفك للتحميل المباشر
+      </h3>
+      <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.6;" data-i18n="modal_sub">
+        يتوفر Mo Alarm مجاناً بالكامل وبدون أي إعلانات لكل من هواتف الأندرويد والأيفون بآخر إصدار رسمي.
+      </p>
+
+      <div class="dl-platform-grid">
+        <!-- Android Option -->
+        <div class="dl-platform-option" id="modal-card-android">
+          <div>
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:12px;">
+              <div class="dl-platform-icon android" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4483-.9993.9993-.9993c.5511 0 .9993.4483.9993.9993.0001.5511-.4482.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4483.9993.9993 0 .5511-.4483.9997-.9993.9997m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.8508 12 7.8508s-3.5902.3931-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.1185-9.4396"/>
+                </svg>
+              </div>
+              <span class="dl-detected-pill" data-i18n="modal_detected">✓ جهازك الحالي</span>
+            </div>
+            <div style="font-weight:900; font-size:1.06rem; margin-bottom:4px;" data-i18n="modal_android_title">نسخة الأندرويد (Android)</div>
+            <div style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:8px;" id="modal-apk-meta">v1.4.2 • 17.0 MB • Android 8.0+</div>
+            <div style="font-size:0.78rem; color:var(--text-secondary); line-height:1.5;" data-i18n="modal_android_desc">تثبيت فوري بضغطة واحدة عبر ملف <code>app-release.apk</code> الرسمي.</div>
+          </div>
+          <a class="dl-platform-btn android" data-apk-link href="https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/app-release.apk" onclick="closeDownloadModalSoon()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span data-i18n="modal_android_btn">تنزيل للأندرويد (APK)</span>
+          </a>
+        </div>
+
+        <!-- iPhone / iOS Option -->
+        <div class="dl-platform-option" id="modal-card-ios">
+          <div>
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:12px;">
+              <div class="dl-platform-icon ios" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.33c.64-.78 1.08-1.86.96-2.94-.93.04-2.06.62-2.72 1.4-.58.68-1.1 1.79-.96 2.84 1.04.08 2.08-.52 2.72-1.3z"/>
+                </svg>
+              </div>
+              <span class="dl-detected-pill" data-i18n="modal_detected">✓ جهازك الحالي</span>
+            </div>
+            <div style="font-weight:900; font-size:1.06rem; margin-bottom:4px;" data-i18n="modal_ios_title">نسخة الأيفون (iPhone / iOS)</div>
+            <div style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:8px;" id="modal-ipa-meta">v1.4.2 • 24.8 MB • iOS 17+</div>
+            <div style="font-size:0.78rem; color:var(--text-secondary); line-height:1.5;" data-i18n="modal_ios_desc">ملف <code>MoAlarm-iOS.ipa</code> للتثبيت المجاني عبر Sideloadly أو AltStore.</div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <a class="dl-platform-btn ios" data-ipa-link href="https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/MoAlarm-iOS.ipa" onclick="closeDownloadModalSoon()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              <span data-i18n="modal_ios_btn">تنزيل للأيفون (IPA)</span>
+            </a>
+            <a href="#iphone-install-guide" onclick="closeDownloadModal()" style="font-size:0.75rem; color:var(--accent); text-align:center; text-decoration:underline; font-weight:700;" data-i18n="modal_ios_guide">
+              شرح التثبيت على الأيفون في ٣ خطوات
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -1930,17 +2239,16 @@
         nav_install: 'طريقة التثبيت',
         nav_faq: 'الأسئلة الشائعة',
         nav_contact: 'تواصل معي',
-        nav_download: 'تحميل APK',
-        hero_badge: 'الإصدار الرسمي v1.4.2 • بدون إعلانات • بدون إنترنت',
+        nav_download: 'تحميل التطبيق',
+        hero_badge: 'الإصدار الرسمي v1.4.2 • أندرويد &amp; أيفون • بدون إعلانات',
         hero_title: 'لا تفوّت <span class="gold-highlight">صلاة الفجر</span> ولا تكبيرة الإحرام بعد اليوم',
         hero_lead: 'صُمّم <strong>Mo Alarm</strong> ليجمع بين الدقّة الفلكية لمواقيت الصلاة، وتحديات الاستيقاظ الذكية لصلاة الفجر، و٢٩٢ صوت أذان، والوضع الصامت التلقائي داخل المسجد، مع ١٢١ ذكراً ودعاء ما بعد الأذان بتصميم هادئ يحترم خصوصيتك.',
-        cta_primary: 'تحميل مباشر للأندرويد (APK • 17.0 MB)',
-        cta_ios: 'تحميل للأيفون (iOS .ipa • مجاناً)',
+        cta_primary: 'تحميل التطبيق مجاناً (أندرويد &amp; أيفون)',
         cta_share: 'مشاركة الرابط مع أصدقائك',
         trust_1: 'خصوصية ١٠٠٪ ومتوافق مع InstaPay',
         trust_2: 'دعم شاشات 120Hz وويدجت القفل',
         trust_3: '٢٩٢ مؤذناً و١٢١ ذكراً موثّقاً',
-        trust_downloads: 'إجمالي التحميلات من GitHub: جاري التحديث...',
+        trust_downloads: 'إجمالي التحميلات الرسمية: موثّق على GitHub',
         mock_loc: 'القاهرة • هيئة المساحة',
         mock_next_lbl: 'الصلاة القادمة • الفجر',
         mock_fajr_time: '٠٤:١٨ ص',
@@ -2041,16 +2349,28 @@
         st3_num: '٣',
         st3_title: 'حدّد موقعك بلمسة',
         st3_desc: 'افتح التطبيق من شاشتك الرئيسية واضبط منبّه الفجر.',
-        dl_btn_apk: 'تنزيل الإصدار v1.4.2 (app-release.apk)',
-        dl_btn_ipa: 'تنزيل نسخة الأيفون (MoAlarm-iOS-v1.4.2.ipa)',
+        dl_btn_choose: 'اختر نسختك وحمّل الآن (أندرويد / أيفون)',
+        dl_btn_rel: 'صفحة الإصدار على GitHub',
         ios_guide_title: 'طريقة التثبيت على الأيفون مجاناً (iOS 17+ — ملف .ipa عبر Sideloadly أو AltStore)',
-        ios_step_1: '<strong>١. حمّل ملف الأيفون:</strong> اضغط على زر <code>MoAlarm-iOS-v1.4.2.ipa</code> أعلاه لحفظ ملف التطبيق.',
+        ios_step_1: '<strong>١. حمّل نسخة الأيفون:</strong> اضغط على زر التحميل واختر <strong>نسخة الأيفون (iOS .ipa)</strong> لحفظ آخر إصدار تلقائياً.',
         ios_step_2: '<strong>٢. ثبّت عبر Sideloadly أو AltStore / SideStore (مجاناً):</strong> افتح برنامج <a href="https://sideloadly.io" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:underline;">Sideloadly</a> (ويندوز/ماك) أو <a href="https://altstore.io" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:underline;">AltStore</a>، وصّل الأيفون، واسحب ملف <code>.ipa</code> مع إدخال حساب Apple ID العادي (المجاني).',
         ios_step_3: '<strong>٣. وثّق الشهادة على الأيفون:</strong> افتح <code>الإعدادات ← عام ← VPN وإدارة الجهاز</code> (Settings → General → VPN &amp; Device Management) واضغط <strong>الوثوق (Trust)</strong>، مع تفعيل <code>وضع المطور (Developer Mode)</code> في iOS 17+.',
-        dl_btn_rel: 'صفحة الإصدار على GitHub',
         qr_title: 'امسح الرمز للتحميل من الهاتف',
-        qr_meta: 'الإصدار: <strong>v1.4.2</strong> • Android 8.0+',
-        qr_downloads: 'إجمالي التنزيلات: جاري الجلب من GitHub...',
+        qr_tab_android: 'أندرويد (APK)',
+        qr_tab_ios: 'أيفون (iOS)',
+        qr_meta: 'الإصدار: <strong>v1.4.2</strong> • Android 8.0+ &amp; iOS 17+',
+        qr_downloads: 'إجمالي التنزيلات: موثّق على GitHub',
+        modal_badge: 'تحديث تلقائي لآخر إصدار رسمي',
+        modal_title: 'اختر نوع هاتفك للتحميل المباشر',
+        modal_sub: 'يتوفر Mo Alarm مجاناً بالكامل وبدون أي إعلانات لكل من هواتف الأندرويد والأيفون بآخر إصدار رسمي.',
+        modal_detected: '✓ جهازك الحالي',
+        modal_android_title: 'نسخة الأندرويد (Android)',
+        modal_android_desc: 'تثبيت فوري بضغطة واحدة عبر ملف <code>app-release.apk</code> الرسمي.',
+        modal_android_btn: 'تنزيل للأندرويد (APK)',
+        modal_ios_title: 'نسخة الأيفون (iPhone / iOS)',
+        modal_ios_desc: 'ملف <code>MoAlarm-iOS.ipa</code> للتثبيت المجاني عبر Sideloadly أو AltStore.',
+        modal_ios_btn: 'تنزيل للأيفون (IPA)',
+        modal_ios_guide: 'شرح التثبيت على الأيفون في ٣ خطوات',
         cl_title: 'أبرز تحديثات آخر إصدار (مزامنة تلقائية من GitHub)',
         cl_item_1: 'كتم فوري للأذان والمنبّه بقلب الهاتف (0ms) أو أزرار الصوت والباور حتى والشاشة مغلقة.',
         cl_item_2: 'مركز إشعارات نشطة داخل التطبيق وإشعار تلقائي عند توفر تحديث جديد بضغطة واحدة.',
@@ -2059,7 +2379,7 @@
         faq_title: 'الأسئلة الشائعة وطريقة الضبط المثالي',
         faq_sub: 'كل ما تحتاج معرفته حول التثبيت المباشر، التوافق مع التطبيقات البنكية، وضمان عمل الأذان ومنبّه الفجر بدقة ١٠٠٪.',
         faq_q1: 'هل التطبيق آمن ومتوافق مع InstaPay والتطبيقات البنكية؟',
-        faq_a1: 'نعم ١٠٠٪. تطبيق Mo Alarm مفتوح المصدر بالكامل على GitHub، ولا يستخدم خدمات تسهيلات الاستخدام (Accessibility Services) التي ترفضها التطبيقات البنكية مثل InstaPay، ولا يجمع أي بيانات شخصية.',
+        faq_a1: 'نعم ١٠٠٪. تطبيق Mo Alarm مجاني بالكامل ويُوزَّع رسمياً عبر GitHub Releases، ولا يستخدم خدمات تسهيلات الاستخدام (Accessibility Services) التي ترفضها التطبيقات البنكية مثل InstaPay، ولا يجمع أي بيانات شخصية.',
         faq_q2: 'ماذا أفعل إذا ظهرت رسالة Google Play Protect أثناء التثبيت؟',
         faq_a2: 'لأن التطبيق يُحمّل مباشرة من GitHub Releases وليس من متجر بلاي، قد يظهر تنبيه قياسي من أندرويد. اضغط على <strong>«مزيد من التفاصيل / More details»</strong> ثم اختر <strong>«التثبيت على أي حال / Install anyway»</strong>.',
         faq_q3: 'كيف أضمن عدم تأخر الأذان أو منبّه الفجر في الخلفية؟',
@@ -2067,7 +2387,7 @@
         faq_q4: 'كيف أحصل على التحديثات الجديدة مستقبلاً؟',
         faq_a4: 'يحتوي التطبيق على نظام تحديث داخلي تلقائي يعرض لك نافذة عند صدور أي إصدار جديد لتحميله وتثبيته مباشرة، كما أن هذه الصفحة تتحدث تلقائياً بآخر إصدار من GitHub.',
         sticky_sub: 'مجاني ١٠٠٪ • بدون إعلانات',
-        sticky_btn: 'تحميل مباشر',
+        sticky_btn: 'تحميل',
         contact_tag: 'تطوير: م. محمد رضا عامر (Mohamed Reda Amer)',
         contact_title: 'تواصل معي مباشرةً',
         contact_sub: 'يسعدني دائماً استقبال اقتراحاتكم لتطوير التطبيق، أو الإبلاغ عن أي ملاحظة، أو التواصل المهني والتعاون في المشاريع البرمجية والذكاء الاصطناعي.',
@@ -2077,7 +2397,7 @@
         c_issues_lbl: 'اقتراح ميزة أو دعم',
         c_issues_handle: 'GitHub Issues',
         footer_title: 'Mo Alarm — مؤذّن ومنبّه الفجر الذكي',
-        footer_sub: 'مفتوح المصدر ومجاني بالكامل لوجه الله • تطوير م. محمد رضا عامر © 2026'
+        footer_sub: 'مجاني بالكامل لوجه الله • تطوير م. محمد رضا عامر © 2026'
       },
       en: {
         dir: 'ltr',
@@ -2088,17 +2408,16 @@
         nav_install: 'How to Install',
         nav_faq: 'FAQ',
         nav_contact: 'Contact Me',
-        nav_download: 'Download APK',
-        hero_badge: 'Official v1.4.2 • 100% Ad-Free • Works Offline',
+        nav_download: 'Download App',
+        hero_badge: 'Official v1.4.2 • Android &amp; iPhone • 100% Ad-Free',
         hero_title: 'Never Miss <span class="gold-highlight">Fajr Prayer</span> or Takbirat Al-Ihram Again',
         hero_lead: '<strong>Mo Alarm</strong> combines high-precision offline astronomical prayer times, un-bypassable Fajr wake-up challenges, 292 authentic Adhan voices, automatic Mosque silent mode, and 121 authentic Adhkar in a serene, privacy-first interface.',
-        cta_primary: 'Direct Android Download (APK • 17.0 MB)',
-        cta_ios: 'Download for iPhone (iOS .ipa • Free)',
+        cta_primary: 'Free Download (Android &amp; iPhone)',
         cta_share: 'Share Link with Friends',
         trust_1: '100% Private & InstaPay Compatible',
         trust_2: '120Hz UI & Lock-Screen Widgets',
         trust_3: '292 Adhan Voices & 121 Authentic Adhkar',
-        trust_downloads: 'Official GitHub Downloads: Syncing live...',
+        trust_downloads: 'Official Downloads: Verified on GitHub',
         mock_loc: 'Cairo • Egyptian Survey',
         mock_next_lbl: 'Next Prayer • Fajr',
         mock_fajr_time: '04:18 AM',
@@ -2199,16 +2518,28 @@
         st3_num: '3',
         st3_title: 'One-Tap Location Setup',
         st3_desc: 'Open Mo Alarm from your home screen, detect your city, and set your Fajr alarm.',
-        dl_btn_apk: 'Download Release v1.4.2 (app-release.apk)',
-        dl_btn_ipa: 'Download for iPhone (MoAlarm-iOS-v1.4.2.ipa)',
-        ios_guide_title: 'How to Install on iPhone for Free (iOS 17+ — .ipa via Sideloadly or AltStore)',
-        ios_step_1: '<strong>1. Download the iOS .ipa:</strong> Click the <code>MoAlarm-iOS-v1.4.2.ipa</code> button above to save the iPhone package.',
-        ios_step_2: '<strong>2. Sideload for Free via Sideloadly or AltStore / SideStore:</strong> Open <a href="https://sideloadly.io" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:underline;">Sideloadly</a> (Windows/Mac) or <a href="https://altstore.io" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:underline;">AltStore</a>, connect your iPhone, and drag the <code>.ipa</code> file using your free Apple ID.',
-        ios_step_3: '<strong>3. Trust on iPhone:</strong> Go to <code>Settings → General → VPN &amp; Device Management</code>, tap <strong>Trust</strong> on your Apple ID developer certificate, and enable <code>Developer Mode</code> on iOS 17+.',
+        dl_btn_choose: 'Choose Your Device &amp; Download (Android / iPhone)',
         dl_btn_rel: 'View Release on GitHub',
+        ios_guide_title: 'How to Install on iPhone for Free (iOS 17+ — .ipa via Sideloadly or AltStore)',
+        ios_step_1: '<strong>1. Download the iPhone build:</strong> Click the Download button and select <strong>iPhone (iOS .ipa)</strong> to grab the latest release automatically.',
+        ios_step_2: '<strong>2. Sideload for Free via Sideloadly or AltStore / SideStore:</strong> Open <a href="https://sideloadly.io" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:underline;">Sideloadly</a> (Windows/Mac) or <a href="https://altstore.io" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:underline;">AltStore</a>, connect your iPhone, and drag the <code>.ipa</code> file using your free Apple ID.',
+        ios_step_3: '<strong>3. Trust on iPhone:</strong> Go to <code>Settings → General → VPN &amp; Device Management</code>, tap <strong>Trust</strong> on your Apple ID certificate, and enable <code>Developer Mode</code> on iOS 17+.',
         qr_title: 'Scan QR Code with Your Phone',
-        qr_meta: 'Version: <strong>v1.4.2</strong> • Android 8.0+',
-        qr_downloads: 'Total GitHub Downloads: Syncing live...',
+        qr_tab_android: 'Android (APK)',
+        qr_tab_ios: 'iPhone (iOS)',
+        qr_meta: 'Version: <strong>v1.4.2</strong> • Android 8.0+ &amp; iOS 17+',
+        qr_downloads: 'Total Downloads: Verified on GitHub',
+        modal_badge: 'Auto-synced with Latest Official Release',
+        modal_title: 'Choose Your Device to Download',
+        modal_sub: 'Mo Alarm is 100% free and ad-free for both Android and iPhone, always serving the newest official release.',
+        modal_detected: '✓ Your Device',
+        modal_android_title: 'Android Version',
+        modal_android_desc: 'One-tap direct install via the official <code>app-release.apk</code> package.',
+        modal_android_btn: 'Download for Android (APK)',
+        modal_ios_title: 'iPhone / iOS Version',
+        modal_ios_desc: 'Official <code>MoAlarm-iOS.ipa</code> for free install via Sideloadly or AltStore.',
+        modal_ios_btn: 'Download for iPhone (IPA)',
+        modal_ios_guide: 'View 3-Step Free iPhone Install Guide',
         cl_title: 'What\'s New in Latest Release (Auto-Synced from GitHub)',
         cl_item_1: 'Instant 0ms Flip-to-Mute and Power/Volume key mute for Adhan, Iqamah, and Alarms even when screen is off.',
         cl_item_2: 'In-App Active Notifications Center and automatic one-tap New Update Available modal dialog.',
@@ -2217,7 +2548,7 @@
         faq_title: 'Frequently Asked Questions & Setup Guide',
         faq_sub: 'Everything you need to know about direct APK installation, banking app compatibility, and 100% reliable background alarms.',
         faq_q1: 'Is Mo Alarm safe and compatible with InstaPay & banking apps?',
-        faq_a1: 'Yes, 100%. Mo Alarm is completely open-source on GitHub, never uses Accessibility Services (which banking apps like InstaPay block), and collects zero personal data.',
+        faq_a1: 'Yes, 100%. Mo Alarm is completely free and officially distributed via GitHub Releases, never uses Accessibility Services (which banking apps like InstaPay block), and collects zero personal data.',
         faq_q2: 'What if Google Play Protect shows a prompt during installation?',
         faq_a2: 'Because the APK is downloaded directly from GitHub Releases rather than the Play Store, Android may show a standard prompt. Tap <strong>"More details"</strong> and then select <strong>"Install anyway"</strong>.',
         faq_q3: 'How do I ensure Fajr alarms & Adhan never get delayed in the background?',
@@ -2225,7 +2556,7 @@
         faq_q4: 'How do I get future app updates?',
         faq_a4: 'Mo Alarm includes a built-in auto-updater that notifies you whenever a new release is published on GitHub, and this landing page automatically syncs with the latest release.',
         sticky_sub: '100% Free • Zero Ads',
-        sticky_btn: 'Download APK',
+        sticky_btn: 'Download',
         contact_tag: 'Developed by Eng. Mohamed Reda Amer',
         contact_title: 'Get in Touch Directly',
         contact_sub: 'I always welcome your feature suggestions, bug reports, or professional inquiries regarding software engineering, data solutions, and AI projects.',
@@ -2235,7 +2566,7 @@
         c_issues_lbl: 'Feature Request / Support',
         c_issues_handle: 'GitHub Issues',
         footer_title: 'Mo Alarm — Smart Prayer & Fajr Wake-Up Companion',
-        footer_sub: 'Open-Source & 100% Free for the Muslim Community • By Mohamed Reda Amer © 2026'
+        footer_sub: '100% Free for the Muslim Community • By Mohamed Reda Amer © 2026'
       }
     };
 
@@ -2305,107 +2636,315 @@
       }
     })();
 
-    // Auto-sync latest version, APK size, download URL, total downloads across all releases, and release date from GitHub Releases API
+    let currentQrPlatform = 'android';
+    let latestResolvedState = {
+      tag: 'v1.4.2',
+      apkTag: 'v1.4.2',
+      sizeMB: '17.0 MB',
+      apkUrl: 'https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/app-release.apk',
+      ipaTag: 'v1.4.2',
+      ipaSizeMB: '24.8 MB',
+      ipaUrl: 'https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/MoAlarm-iOS.ipa',
+      releaseUrl: 'https://github.com/Mohamedredaaa/mo-alarm/releases/latest',
+      totalDownloads: 0,
+      latestDownloads: 0,
+      publishedAt: null,
+      arBullets: [],
+      enBullets: []
+    };
+
+    function detectVisitorPlatform() {
+      const ua = navigator.userAgent || '';
+      const isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      if (isIOS) return 'ios';
+      if (/Android/i.test(ua)) return 'android';
+      if (/Macintosh|Mac OS X/i.test(ua)) return 'ios';
+      return null;
+    }
+
+    function openDownloadModal(e) {
+      if (e) e.preventDefault();
+      const modal = document.getElementById('download-platform-modal');
+      if (!modal) return;
+      const detected = detectVisitorPlatform();
+      const androidCard = document.getElementById('modal-card-android');
+      const iosCard = document.getElementById('modal-card-ios');
+      if (androidCard) androidCard.classList.toggle('recommended', detected === 'android');
+      if (iosCard) iosCard.classList.toggle('recommended', detected === 'ios');
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDownloadModal() {
+      const modal = document.getElementById('download-platform-modal');
+      if (modal) modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function closeDownloadModalSoon() {
+      setTimeout(() => {
+        closeDownloadModal();
+        setTimeout(syncLatestRelease, 4000);
+      }, 450);
+    }
+
+    function handleModalBackdropClick(e) {
+      if (e.target && e.target.id === 'download-platform-modal') {
+        closeDownloadModal();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDownloadModal();
+    });
+
+    function setQrPlatform(platform) {
+      currentQrPlatform = (platform === 'ios') ? 'ios' : 'android';
+      const btnAndroid = document.getElementById('qr-btn-android');
+      const btnIos = document.getElementById('qr-btn-ios');
+      if (btnAndroid) btnAndroid.classList.toggle('active', currentQrPlatform === 'android');
+      if (btnIos) btnIos.classList.toggle('active', currentQrPlatform === 'ios');
+      const targetUrl = currentQrPlatform === 'ios' ? latestResolvedState.ipaUrl : latestResolvedState.apkUrl;
+      const qrLink = document.getElementById('qr-code-link');
+      const qrImg = document.getElementById('qr-code-img');
+      if (qrLink) qrLink.href = targetUrl;
+      if (qrImg) {
+        qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&bgcolor=0B0F17&color=D4AF37&data=' + encodeURIComponent(targetUrl);
+      }
+    }
+
+    function parseReleaseChangelog(bodyText) {
+      if (!bodyText || typeof bodyText !== 'string') return { ar: [], en: [] };
+      const sections = bodyText.split(/\n---+\n/);
+      const extractBullets = (txt) => (txt || '')
+        .split('\n')
+        .map(l => l.trim())
+        .filter(l => l.startsWith('- ') || l.startsWith('* '))
+        .map(l => l.replace(/^[-*]\s+/, '').trim())
+        .filter(Boolean)
+        .slice(0, 4);
+      return {
+        ar: extractBullets(sections[0] || ''),
+        en: extractBullets(sections[1] || sections[0] || '')
+      };
+    }
+
+    function renderLiveChangelog() {
+      const listEl = document.getElementById('live-changelog-list');
+      if (!listEl) return;
+      const bullets = isEnglish ? latestResolvedState.enBullets : latestResolvedState.arBullets;
+      if (Array.isArray(bullets) && bullets.length > 0) {
+        listEl.innerHTML = '';
+        bullets.forEach(text => {
+          const li = document.createElement('li');
+          li.textContent = text;
+          listEl.appendChild(li);
+        });
+      }
+    }
+
+    function applyReleaseData(data) {
+      if (!data) return;
+      latestResolvedState = Object.assign({}, latestResolvedState, data);
+      const tag = latestResolvedState.tag || 'v1.4.2';
+      const apkTag = latestResolvedState.apkTag || tag;
+      const ipaTag = latestResolvedState.ipaTag || tag;
+      const sizeMB = latestResolvedState.sizeMB || '17.0 MB';
+      const ipaSizeMB = latestResolvedState.ipaSizeMB || '24.8 MB';
+      const totalDownloads = latestResolvedState.totalDownloads || 0;
+      const latestDownloads = latestResolvedState.latestDownloads || 0;
+      const apkUrl = latestResolvedState.apkUrl || 'https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/app-release.apk';
+      const ipaUrl = latestResolvedState.ipaUrl || 'https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/MoAlarm-iOS.ipa';
+      const releaseUrl = latestResolvedState.releaseUrl || ('https://github.com/Mohamedredaaa/mo-alarm/releases/tag/' + tag);
+
+      document.querySelectorAll('[data-apk-link]').forEach(el => { el.href = apkUrl; });
+      document.querySelectorAll('[data-ipa-link]').forEach(el => { el.href = ipaUrl; });
+      document.querySelectorAll('[data-release-link]').forEach(el => { el.href = releaseUrl; });
+
+      const totalAr = totalDownloads.toLocaleString('ar-EG');
+      const latestAr = latestDownloads.toLocaleString('ar-EG');
+      const totalEn = totalDownloads.toLocaleString('en-US');
+      const latestEn = latestDownloads.toLocaleString('en-US');
+
+      i18n.ar.hero_badge = `الإصدار الرسمي ${tag} • أندرويد &amp; أيفون • بدون إعلانات`;
+      i18n.ar.cta_primary = `تحميل الإصدار ${tag} مجاناً (أندرويد &amp; أيفون)`;
+      i18n.ar.dl_btn_choose = `اختر نسختك وحمّل ${tag} (أندرويد / أيفون)`;
+      if (totalDownloads > 0) {
+        i18n.ar.trust_downloads = `إجمالي التحميلات الرسمية: ${totalAr} تنزيل (${latestAr} للإصدار ${tag})`;
+        i18n.ar.qr_downloads = `إجمالي التنزيلات: <strong>${totalAr}</strong> (${latestAr} لآخر إصدار)`;
+        i18n.en.trust_downloads = `Official Downloads: ${totalEn} total (${latestEn} on ${tag})`;
+        i18n.en.qr_downloads = `Total Downloads: <strong>${totalEn}</strong> (${latestEn} on latest)`;
+      }
+      i18n.ar.feat_tag = `الإصدار ${tag} • ٦ منظومات ذكية`;
+      i18n.ar.cmp_r3_c2 = `✓ مدعوم بالكامل في الإصدار ${tag}`;
+      i18n.ar.qr_meta = `الإصدار: <strong>${tag}</strong> • Android (${sizeMB}) &amp; iOS (${ipaSizeMB})`;
+      i18n.ar.sticky_sub = `أندرويد &amp; أيفون • مجاني ١٠٠٪`;
+      i18n.ar.modal_android_btn = `تنزيل للأندرويد (${apkTag})`;
+      i18n.ar.modal_ios_btn = `تنزيل للأيفون (${ipaTag})`;
+
+      i18n.en.hero_badge = `Official ${tag} • Android &amp; iPhone • 100% Ad-Free`;
+      i18n.en.cta_primary = `Free Download ${tag} (Android &amp; iPhone)`;
+      i18n.en.dl_btn_choose = `Choose Device &amp; Download ${tag} (Android / iPhone)`;
+      i18n.en.feat_tag = `Release ${tag} • 6 Smart Worship Systems`;
+      i18n.en.cmp_r3_c2 = `✓ Fully supported in ${tag}`;
+      i18n.en.qr_meta = `Version: <strong>${tag}</strong> • Android (${sizeMB}) &amp; iOS (${ipaSizeMB})`;
+      i18n.en.sticky_sub = `Android &amp; iPhone • 100% Free`;
+      i18n.en.modal_android_btn = `Download for Android (${apkTag})`;
+      i18n.en.modal_ios_btn = `Download for iPhone (${ipaTag})`;
+
+      const apkMetaEl = document.getElementById('modal-apk-meta');
+      if (apkMetaEl) apkMetaEl.textContent = `${apkTag} • ${sizeMB} • Android 8.0+`;
+      const ipaMetaEl = document.getElementById('modal-ipa-meta');
+      if (ipaMetaEl) ipaMetaEl.textContent = `${ipaTag} • ${ipaSizeMB} • iOS 17+`;
+      const modalLiveTag = document.getElementById('modal-live-tag');
+      if (modalLiveTag) modalLiveTag.textContent = tag;
+
+      const mockVer = document.getElementById('mock-version-label');
+      if (mockVer) mockVer.textContent = `Mo Alarm ${tag}`;
+      const stickyVer = document.getElementById('sticky-ver-tag');
+      if (stickyVer) stickyVer.textContent = tag;
+      const relBox = document.getElementById('release-path-box');
+      if (relBox) relBox.textContent = `Release: github.com/Mohamedredaaa/mo-alarm/releases/tag/${tag}`;
+      document.title = `Mo Alarm | مؤذّن ومنبّه الفجر الذكي — الإصدار الرسمي ${tag}`;
+
+      if (latestResolvedState.publishedAt) {
+        const dateEl = document.getElementById('live-release-date');
+        if (dateEl) {
+          const d = new Date(latestResolvedState.publishedAt);
+          dateEl.textContent = `${tag} • ${d.toISOString().slice(0, 10)}`;
+        }
+      }
+
+      setQrPlatform(currentQrPlatform);
+      applyLanguage(isEnglish ? 'en' : 'ar');
+      renderLiveChangelog();
+    }
+
+    // Auto-sync latest version, APK & IPA sizes/URLs, changelog, and total downloads across all releases
     async function syncLatestRelease() {
+      const detected = detectVisitorPlatform();
+      if (detected === 'ios') currentQrPlatform = 'ios';
+
+      // 1. Instant load from localStorage cache
       try {
-        const res = await fetch('https://api.github.com/repos/Mohamedredaaa/mo-alarm/releases?per_page=100&t=' + Date.now(), {
-          cache: 'no-store',
+        const cached = localStorage.getItem('mo_alarm_release_cache_v3');
+        if (cached) {
+          applyReleaseData(JSON.parse(cached));
+        }
+      } catch (e) {}
+
+      let data = {
+        tag: 'v1.4.2',
+        apkTag: 'v1.4.2',
+        sizeMB: '17.0 MB',
+        ipaTag: 'v1.4.2',
+        ipaSizeMB: '24.8 MB',
+        totalDownloads: 0,
+        latestDownloads: 0,
+        apkUrl: 'https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/app-release.apk',
+        ipaUrl: 'https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/MoAlarm-iOS.ipa',
+        releaseUrl: 'https://github.com/Mohamedredaaa/mo-alarm/releases/latest',
+        publishedAt: null,
+        arBullets: [],
+        enBullets: []
+      };
+      let fetchedFromGitHub = false;
+
+      // 2. Fetch from GitHub Releases API (automatically resolves newest APK and newest IPA)
+      try {
+        const res = await fetch('https://api.github.com/repos/Mohamedredaaa/mo-alarm/releases?per_page=100', {
           headers: { 'Accept': 'application/vnd.github+json' }
         });
-        if (!res.ok) return;
-        const releases = await res.json();
-        if (!Array.isArray(releases) || releases.length === 0) return;
+        if (res.ok) {
+          const releases = await res.json();
+          if (Array.isArray(releases) && releases.length > 0) {
+            const stableReleases = releases.filter(r => !r.draft && !r.prerelease);
+            const pool = stableReleases.length > 0 ? stableReleases : releases;
 
-        // Calculate total download_count across all releases (100% privacy-preserving)
-        let totalDownloads = 0;
-        releases.forEach(rel => {
-          if (Array.isArray(rel.assets)) {
-            rel.assets.forEach(asset => {
-              totalDownloads += Number(asset.download_count || 0);
+            let total = 0;
+            releases.forEach(rel => {
+              if (Array.isArray(rel.assets)) {
+                rel.assets.forEach(asset => {
+                  total += Number(asset.download_count || 0);
+                });
+              }
             });
-          }
-        });
 
-        const release = releases.find(r => !r.draft && !r.prerelease) || releases[0];
-        const tag = release.tag_name;
-        if (!tag) return;
+            const headRelease = pool[0];
+            if (headRelease && headRelease.tag_name) {
+              data.tag = headRelease.tag_name;
+              data.publishedAt = headRelease.published_at;
+              data.releaseUrl = headRelease.html_url || ('https://github.com/Mohamedredaaa/mo-alarm/releases/tag/' + data.tag);
+              const parsed = parseReleaseChangelog(headRelease.body || '');
+              data.arBullets = parsed.ar;
+              data.enBullets = parsed.en;
+              if (Array.isArray(headRelease.assets)) {
+                data.latestDownloads = headRelease.assets.reduce((acc, a) => acc + Number(a.download_count || 0), 0);
+              }
+            }
 
-        const assets = Array.isArray(release.assets) ? release.assets : [];
-        const apkAsset = assets.find(a => a.name && a.name.endsWith('.apk')) || assets[0];
-        const latestDownloads = apkAsset ? Number(apkAsset.download_count || 0) : 0;
-        const apkUrl = (apkAsset && apkAsset.browser_download_url)
-          ? apkAsset.browser_download_url
-          : 'https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/app-release.apk';
-        const sizeMB = (apkAsset && apkAsset.size)
-          ? (apkAsset.size / (1024 * 1024)).toFixed(1) + ' MB'
-          : '17.0 MB';
-        const releaseUrl = release.html_url || ('https://github.com/Mohamedredaaa/mo-alarm/releases/tag/' + tag);
+            // Find newest release with an Android .apk asset
+            const apkRelease = pool.find(r => Array.isArray(r.assets) && r.assets.some(a => a.name && a.name.toLowerCase().endsWith('.apk')));
+            if (apkRelease) {
+              const apkAsset = apkRelease.assets.find(a => a.name === 'app-release.apk')
+                || apkRelease.assets.find(a => a.name && a.name.toLowerCase().endsWith('.apk'));
+              if (apkAsset) {
+                data.apkTag = apkRelease.tag_name || data.tag;
+                if (apkAsset.browser_download_url) data.apkUrl = apkAsset.browser_download_url;
+                if (apkAsset.size) data.sizeMB = (apkAsset.size / (1024 * 1024)).toFixed(1) + ' MB';
+              }
+            }
 
-        const ipaAsset = assets.find(a => a.name && a.name.endsWith('.ipa'));
-        const ipaUrl = (ipaAsset && ipaAsset.browser_download_url)
-          ? ipaAsset.browser_download_url
-          : ('https://github.com/Mohamedredaaa/mo-alarm/releases/download/' + tag + '/MoAlarm-iOS-' + tag + '.ipa');
+            // Find newest release with an iPhone .ipa asset
+            const ipaRelease = pool.find(r => Array.isArray(r.assets) && r.assets.some(a => a.name && a.name.toLowerCase().endsWith('.ipa')));
+            if (ipaRelease) {
+              const ipaAsset = ipaRelease.assets.find(a => a.name === 'MoAlarm-iOS.ipa')
+                || ipaRelease.assets.find(a => a.name && a.name.toLowerCase().endsWith('.ipa'));
+              if (ipaAsset) {
+                data.ipaTag = ipaRelease.tag_name || data.tag;
+                if (ipaAsset.browser_download_url) data.ipaUrl = ipaAsset.browser_download_url;
+                if (ipaAsset.size) data.ipaSizeMB = (ipaAsset.size / (1024 * 1024)).toFixed(1) + ' MB';
+              }
+            }
 
-        // Update all APK, IPA, and Release links on page
-        document.querySelectorAll('[data-apk-link]').forEach(el => { el.href = apkUrl; });
-        document.querySelectorAll('[data-ipa-link]').forEach(el => { el.href = ipaUrl; });
-        document.querySelectorAll('[data-release-link]').forEach(el => { el.href = releaseUrl; });
-
-        const totalAr = totalDownloads.toLocaleString('ar-EG');
-        const latestAr = latestDownloads.toLocaleString('ar-EG');
-        const totalEn = totalDownloads.toLocaleString('en-US');
-        const latestEn = latestDownloads.toLocaleString('en-US');
-
-        // Update dynamic version and download count texts in i18n dictionary for both languages
-        i18n.ar.hero_badge = `الإصدار الرسمي ${tag} • بدون إعلانات • بدون إنترنت`;
-        i18n.ar.cta_primary = `تحميل مباشر للأندرويد (APK • ${sizeMB})`;
-        i18n.ar.trust_downloads = `إجمالي التحميلات الرسمية: ${totalAr} تنزيل (${latestAr} للإصدار ${tag})`;
-        i18n.ar.feat_tag = `الإصدار ${tag} • ٦ منظومات ذكية`;
-        i18n.ar.cmp_r3_c2 = `✓ مدعوم بالكامل في الإصدار ${tag}`;
-        i18n.ar.dl_btn_apk = `تنزيل الإصدار ${tag} (app-release.apk)`;
-        i18n.ar.dl_btn_ipa = `تنزيل نسخة الأيفون (MoAlarm-iOS-${tag}.ipa)`;
-        i18n.ar.ios_step_1 = `<strong>١. حمّل ملف الأيفون:</strong> اضغط على زر <code>MoAlarm-iOS-${tag}.ipa</code> أعلاه لحفظ ملف التطبيق.`;
-        i18n.ar.qr_meta = `الإصدار: <strong>${tag}</strong> • Android 8.0+`;
-        i18n.ar.qr_downloads = `إجمالي التنزيلات: <strong>${totalAr}</strong> (${latestAr} لآخر إصدار)`;
-
-        i18n.en.hero_badge = `Official ${tag} • 100% Ad-Free • Works Offline`;
-        i18n.en.cta_primary = `Direct Android Download (APK • ${sizeMB})`;
-        i18n.en.trust_downloads = `Official Downloads: ${totalEn} total (${latestEn} on ${tag})`;
-        i18n.en.feat_tag = `Release ${tag} • 6 Smart Worship Systems`;
-        i18n.en.cmp_r3_c2 = `✓ Fully supported in ${tag}`;
-        i18n.en.dl_btn_apk = `Download Release ${tag} (app-release.apk)`;
-        i18n.en.dl_btn_ipa = `Download for iPhone (MoAlarm-iOS-${tag}.ipa)`;
-        i18n.en.ios_step_1 = `<strong>1. Download the iOS .ipa:</strong> Click the <code>MoAlarm-iOS-${tag}.ipa</code> button above to save the iPhone package.`;
-        i18n.en.qr_meta = `Version: <strong>${tag}</strong> • Android 8.0+`;
-        i18n.en.qr_downloads = `Total Downloads: <strong>${totalEn}</strong> (${latestEn} on latest)`;
-
-        // Update phone mockup header, sticky bar, page title, and release path box
-        const mockVer = document.getElementById('mock-version-label');
-        if (mockVer) mockVer.textContent = `Mo Alarm ${tag}`;
-        const stickyTitle = document.getElementById('sticky-bar-title');
-        if (stickyTitle) stickyTitle.textContent = `Mo Alarm ${tag} • ${sizeMB}`;
-        const relBox = document.getElementById('release-path-box');
-        if (relBox) relBox.textContent = `Release: github.com/Mohamedredaaa/mo-alarm/releases/tag/${tag}`;
-        document.title = `Mo Alarm | مؤذّن ومنبّه الفجر الذكي — الإصدار الرسمي ${tag}`;
-
-        if (release.published_at) {
-          const dateEl = document.getElementById('live-release-date');
-          if (dateEl) {
-            const d = new Date(release.published_at);
-            dateEl.textContent = `${tag} • ${d.toISOString().slice(0, 10)}`;
+            data.totalDownloads = total;
+            fetchedFromGitHub = true;
           }
         }
+      } catch (e) {}
 
-        applyLanguage(isEnglish ? 'en' : 'ar');
+      // 3. Fallback to Shields.io if GitHub API is rate-limited (HTTP 403) or offline
+      if (!fetchedFromGitHub || data.totalDownloads === 0) {
+        try {
+          const sRes = await fetch('https://img.shields.io/github/downloads/Mohamedredaaa/mo-alarm/total.json');
+          if (sRes.ok) {
+            const sData = await sRes.json();
+            const count = parseInt(sData.value || sData.message, 10);
+            if (!isNaN(count) && count > 0) {
+              data.totalDownloads = count;
+              if (data.latestDownloads === 0) data.latestDownloads = count;
+            }
+          }
+        } catch (e) {}
+      }
+
+      // 4. Apply freshly fetched data and save to cache
+      applyReleaseData(data);
+      try {
+        localStorage.setItem('mo_alarm_release_cache_v3', JSON.stringify(data));
       } catch (e) {}
     }
 
+    const origToggleLanguage = toggleLanguage;
+    toggleLanguage = function() {
+      origToggleLanguage();
+      renderLiveChangelog();
+    };
+
     syncLatestRelease();
-    setInterval(syncLatestRelease, 25000);
-    document.querySelectorAll('[data-apk-link]').forEach(btn => {
+    document.querySelectorAll('[data-apk-link], [data-ipa-link]').forEach(btn => {
       btn.addEventListener('click', () => {
-        setTimeout(syncLatestRelease, 4500);
-        setTimeout(syncLatestRelease, 10000);
+        setTimeout(syncLatestRelease, 4000);
       });
     });
 
