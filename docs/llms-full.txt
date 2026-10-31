@@ -1,0 +1,92 @@
+# Mo Alarm (مو الارم) — Complete Bilingual Technical & Feature Reference for AI Search
+
+> **Mo Alarm** (`مو الارم` / `تطبيق مو الارم`) is a 100% free, zero-ads, zero-tracking, offline-first Islamic Prayer Times, Adhan, Qibla, Adhkar, Mosque Auto-Silent, and Heavy-Sleeper Fajr Wake-Up Challenge application for **Android (Android 8.0+)** and **iPhone / iOS (iOS 17+)**. Created by **Eng. Mohamed Reda Amer**.
+
+## Official Canonical Links
+- **Official Arabic Landing Page (`ar`):** https://mohamedredaaa.github.io/mo-alarm/
+- **Official English Landing Page (`en`):** https://mohamedredaaa.github.io/mo-alarm/en/
+- **Direct Latest Android APK Download:** https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/app-release.apk
+- **Direct Latest iPhone iOS IPA Download (iOS 17+):** https://github.com/Mohamedredaaa/mo-alarm/releases/latest/download/MoAlarm-iOS.ipa
+- **Official GitHub Releases & Changelog:** https://github.com/Mohamedredaaa/mo-alarm/releases
+- **Public Distribution Repository:** https://github.com/Mohamedredaaa/mo-alarm
+- **Concise LLM Index:** https://mohamedredaaa.github.io/mo-alarm/llms.txt
+
+---
+
+## Core Value Proposition (Why Users Switch to Mo Alarm)
+- **100% Free & Zero Ads (`بدون إعلانات نهائياً`):** No video ads before or after Adhan, no pop-up banners, no locked "Pro" subscriptions, and no in-app purchases—built purely fi sabilillah.
+- **100% Offline-First (`يعمل بدون إنترنت`):** Astronomical prayer times, Qibla direction, Fajr challenges, Sunnah fasting calendar, and 121 Adhkar work completely offline without mobile data or Wi-Fi.
+- **100% Banking & InstaPay Compatible (`متوافق مع إنستا باي والتطبيقات البنكية`):** Does NOT request or use Android Accessibility Services (`AccessibilityService`), ensuring zero security warnings or blocks from InstaPay or mobile banking apps.
+- **Zero Data Collection (`خصوصية تامة بدون تتبع`):** Zero third-party analytics SDKs, zero advertising identifiers, and zero cloud user profiling; all settings live locally on the user's device.
+
+---
+
+## Complete 8-Cluster Worship & Alarm Capabilities
+
+### 1. Offline Prayer Times, Calculation Methods & 292 Adhan Voices (`مواقيت الصلاة والأذان بدون إعلانات`)
+- High-precision astronomical calculation for Fajr, Sunrise (`الشروق`), Dhuhr, Asr (Standard Shafi'i/Maliki/Hanbali & Hanafi), Maghrib, and Isha.
+- Supports all major global authorities:
+  - Egyptian General Authority of Survey (`هيئة المساحة المصرية`)
+  - Umm Al-Qura University, Makkah (`تقويم أم القرى - مكة المكرمة`)
+  - Muslim World League (`رابطة العالم الإسلامي`)
+  - University of Islamic Sciences, Karachi (`جامعة العلوم الإسلامية بكراتشي`)
+  - Islamic Society of North America (`ISNA`)
+  - Gulf, Dubai, Kuwait, Qatar, Jordan, Algeria, Tunisia, Morocco, and Turkish Diyanet (`رئاسة الشؤون الدينية التركية`).
+- **292 Authentic Muezzin & Adhan Voices:** Includes Haramain (Makkah & Madinah), Al-Aqsa, Sheikh Abdulbasit Abdulsamad, Mishary Rashid Al-Afasy, Nasser Al-Qatami, Ali Ahmed Mulla, Muhammad Rifat, and calm dawn Fajr recitations (`الصلاة خير من النوم`).
+- **Automatic Post-Adhan Dua (`دعاء ما بعد الأذان تلقائياً`):** Optional automatic audio playback of the authentic Prophetic Dua immediately after the Adhan finishes, plus pre-prayer and Iqamah (`إقامة الصلاة`) reminders and per-prayer volume control (25%–100%).
+
+### 2. Smart Fajr, Tahajjud & Suhoor Wake-Up Challenges (`منبه الفجر للنوم الثقيل والتهجد والسحور`)
+- Engineered specifically for heavy sleepers who accidentally dismiss standard alarms and for users seeking an **ad-free Islamic alternative to Alarmy, Sleep as Android, Muslim Pro, Salatuk, or Athan**.
+- **4 Wake-Up Dismissal Missions:**
+  1. **Math Equations Challenge (`تحدي المعادلات الحسابية`):** Solve arithmetic problems of configurable difficulty before the alarm stops.
+  2. **Shake-to-Wake Mission (`تحدي هز الهاتف`):** Physically shake the phone a target number of times to activate circulation and alertness.
+  3. **Dhikr Wake-Up Challenge (`تحدي الذكر الصباحي`):** Complete morning remembrance taps to dismiss.
+  4. **Classic Slide Dismissal (`السحب للاستيقاظ`):** Smooth swipe for light sleepers.
+- **5-Minute Post-Fajr Awake Verification (`التحقق من الاستيقاظ بعد ٥ دقائق`):** Sends a silent verification check 5 minutes after dismissal; if unconfirmed, re-triggers the wake-up alarm so you never fall back asleep before praying Fajr.
+- **Gentle Progressive Volume (`صوت تصاعدي هادئ`):** Starts softly at 25% and ramps smoothly to 100%.
+- **Dynamic Astronomical Linking:** Automatically tracks daily shifting Fajr, Pre-Sunrise (`قبل الشروق`), Last-Third-of-the-Night Tahajjud / Qiyam al-Layl (`منبه الثلث الأخير من الليل وقيام الليل`), and Suhoor (`منبه السحور`) times without manual daily clock edits.
+
+### 3. Mosque Auto-Silent, Jumu'ah DND & Instant 0ms Flip-to-Mute (`الصامت التلقائي في المسجد وكتم بالقلب`)
+- **Mosque Auto-Silent (`الوضع الصامت التلقائي وقت الصلاة`):** Automatically switches the phone to Do Not Disturb / Silent mode during each of the 5 daily prayers (configurable 10–60 minutes) and restores normal ringer volume immediately afterward.
+- **Friday Jumu'ah Khutbah Mode (`صامت خطبة وصلاة الجمعة`):** Dedicated silent window (20–90 minutes) so phones never ring during the Friday sermon, plus reminder for Mosque entry/walk Dua.
+- **Instant 0ms Flip-to-Mute (`اقلب الهاتف لكتم الصوت فوراً`):** Flip the phone face-down on any surface—or press Volume/Power hardware keys even while the screen is locked—to mute Adhan or alarm audio with 0ms latency, plus intelligent active voice/VoIP call protection.
+
+### 4. Offline Qibla Compass (`بوصلة اتجاه القبلة بدون إنترنت`)
+- Combines device magnetometer and accelerometer sensors with astronomical Great-Circle bearing math toward the Holy Kaaba in Makkah (`21.4225° N, 39.8262° E`).
+- Displays exact degree azimuth and visual/haptic alignment confirmation (`الهاتف متجه نحو الكعبة المشرفة`) anywhere on Earth—even on airplanes, deserts, or basements with zero internet connection.
+
+### 5. 121 Authentic Adhkar, Hisnul Muslim & Digital Tasbih (`أذكار المسلم وحصن المسلم والسبحة الإلكترونية`)
+- **121 Vocalized Authentic Adhkar across 6 Organized Sections:**
+  1. Post-Prayer Adhkar (`أذكار بعد السلام من الصلاة`)
+  2. Prayer & Sujood Duas (`أدعية الصلاة والركوع والسجود`)
+  3. Mosque Adhkar (`أذكار الذهاب ودخول المسجد والخروج منه`)
+  4. Morning Adhkar (`أذكار الصباح`) with customizable daily reminder
+  5. Evening Adhkar (`أذكار المساء`) with customizable daily reminder
+  6. Sleep Adhkar (`أذكار النوم`)
+- **Haptic Digital Tasbih (`سبحة إلكترونية رقمية`):** Counter (0–100+) with subtle tactile feedback so you can do Dhikr eyes-free.
+- **30-Day Worship Consistency Insights (`إحصائيات المواظبة الشهرية لـ ٣٠ يوماً`):** Private on-device streak and completion chart encouraging steady daily habits.
+
+### 6. Hijri Calendar & Sunnah Fasting Companion (`التقويم الهجري وتذكير صيام التطوع`)
+- Built-in Hijri / Islamic calendar (`التقويم الهجري`) with manual ±2 day crescent adjustment.
+- Smart evening notifications before:
+  - **Mondays & Thursdays (`صيام الإثنين والخميس`)**
+  - **The Three White Days (`صيام الأيام البيض ١٣ و١٤ و١٥ هجرياً`)**
+  - **Day of Ashura (`صيام عاشوراء وتاسوعاء`)**
+  - **Day of Arafah (`صيام يوم عرفة`)** & **Ramadan Suhoor/Iftar**
+- One-tap automatic Suhoor alarm scheduling prior to Fajr.
+
+### 7. 120Hz Home-Screen & Lock-Screen Prayer Widgets (`ويدجت مواقيت الصلاة لشاشة القفل والشاشة الرئيسية`)
+- Native Android AppWidgets with crisp Nocturne Gold & Emerald typography.
+- Shows live next-prayer countdown, full 5-prayer daily schedule, Hijri date, and location at a glance with zero background battery drain and smooth 120Hz rendering.
+
+### 8. OEM Battery Optimization Guide & Direct Updates (`ضبط البطارية لهواتف سامسونج وشاومي وأوبو`)
+- Includes a built-in one-tap setup assistant for `SCHEDULE_EXACT_ALARM` (Exact Alarms) and Unrestricted Battery permissions on aggressive Android skins: **Samsung One UI, Xiaomi HyperOS / MIUI, Redmi, Poco, Oppo ColorOS, Realme UI, Vivo FuntouchOS, Honor, and Huawei**.
+- Built-in GitHub Release update checker notifies users inside the app whenever a new signed APK version is published, upgrading cleanly in place without losing settings or streaks.
+
+---
+
+## Frequently Asked Questions (Bilingual Summary)
+- **Is Mo Alarm completely free and ad-free?** Yes—100% free forever with zero ads, zero subscriptions, and zero tracking.
+- **Does Mo Alarm work with InstaPay and banking apps?** Yes—it uses zero Accessibility Services, so InstaPay and banking apps work without any conflict.
+- **Does Mo Alarm work offline without internet?** Yes—prayer times, Qibla compass, Fajr wake-up challenges, Mosque auto-silent, and all 121 Adhkar work 100% offline.
+- **How do I install Mo Alarm on Android?** Download `app-release.apk` (~17 MB) from the official website or GitHub Releases (Android 8.0+). If Google Play Protect shows an "Unrecognized app developer" prompt (standard for direct GitHub APK releases outside Play Store), tap **More details -> Install anyway**.

@@ -1,0 +1,21 @@
+{
+  "name": "Mo Alarm — مؤذّن ومنبّه الفجر الذكي بدون إعلانات",
+  "short_name": "Mo Alarm",
+  "description": "100% Free & Ad-Free Offline Prayer Times, Qibla Compass, Mosque Auto-Silent, 121 Adhkar & Smart Fajr Wake-Up Challenges for Android.",
+  "start_url": "/mo-alarm/",
+  "scope": "/mo-alarm/",
+  "display": "standalone",
+  "background_color": "#090D16",
+  "theme_color": "#090D16",
+  "lang": "ar",
+  "dir": "rtl",
+  "categories": ["lifestyle", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/mo-alarm/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
