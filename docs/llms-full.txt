@@ -16,7 +16,7 @@
 ## Core Value Proposition (Why Users Switch to Mo Alarm)
 - **100% Free & Zero Ads (`بدون إعلانات نهائياً`):** No video ads before or after Adhan, no pop-up banners, no locked "Pro" subscriptions, and no in-app purchases—built purely fi sabilillah.
 - **100% Offline-First (`يعمل بدون إنترنت`):** Astronomical prayer times, Qibla direction, Fajr challenges, Sunnah fasting calendar, and 121 Adhkar work completely offline without mobile data or Wi-Fi.
-- **100% Banking & InstaPay Compatible (`متوافق مع إنستا باي والتطبيقات البنكية`):** Does NOT request or use Android Accessibility Services (`AccessibilityService`), ensuring zero security warnings or blocks from InstaPay or mobile banking apps.
+- **Ultra-Low Battery & Zero Overheating (`خفيف جداً بدون استنزاف للبطارية أو سخونة`):** Uses exact system alarm scheduling and local astronomical math with zero constant background polling.
 - **Zero Data Collection (`خصوصية تامة بدون تتبع`):** Zero third-party analytics SDKs, zero advertising identifiers, and zero cloud user profiling; all settings live locally on the user's device.
 
 ---
@@ -87,6 +87,6 @@
 
 ## Frequently Asked Questions (Bilingual Summary)
 - **Is Mo Alarm completely free and ad-free?** Yes—100% free forever with zero ads, zero subscriptions, and zero tracking.
-- **Does Mo Alarm work with InstaPay and banking apps?** Yes—it uses zero Accessibility Services, so InstaPay and banking apps work without any conflict.
+- **Does Mo Alarm drain battery or overheat the phone?** No—all calculations run locally offline and alarms use exact OS scheduling with zero background drain.
 - **Does Mo Alarm work offline without internet?** Yes—prayer times, Qibla compass, Fajr wake-up challenges, Mosque auto-silent, and all 121 Adhkar work 100% offline.
 - **How do I install Mo Alarm on Android?** Download `app-release.apk` (~17 MB) from the official website or GitHub Releases (Android 8.0+). If Google Play Protect shows an "Unrecognized app developer" prompt (standard for direct GitHub APK releases outside Play Store), tap **More details -> Install anyway**.

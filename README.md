@@ -6,7 +6,7 @@
 
 **Sanctuary-Grade Islamic Prayer Times, Un-Bypassable Fajr Wake-Up Challenges, Interactive Adhkar & Tasbih, 292 Adhan Voices, Independent Jumu'ah Smart DND & Transparent Home/Lock Screen Widgets (Android & iOS)**
 
-<img src="docs/screenshots/tech-stack-badges.png" alt="Android 8.0-15+ • Kotlin 2.0.21 • Jetpack Compose M3 • Dagger Hilt 2.52 • InstaPay Safe • 100% Offline-First" height="28" />
+<img src="docs/screenshots/tech-stack-badges.png" alt="Android 8.0-15+ & iOS 17+ • Kotlin & SwiftUI • Jetpack Compose M3 • Zero Ads & Ultra-Light • 100% Offline-First" height="28" />
 
 <br/><br/>
 
@@ -33,7 +33,7 @@ Mo Alarm is crafted around an **OLED-first Sanctuary Obsidian & Champagne Gold**
 
 <div align="center">
   <img src="docs/screenshots/05-home-widget-bar.png" alt="2x1 Transparent Prayer Grid Widget" width="520" /><br/>
-  <sub><b>2×1 Transparent Prayer Times Grid (`فجر / ظهر / مغرب | تهجد / عصر / عشاء`)</b> — displays every prayer time cleanly, highlights the upcoming prayer automatically, and works 100% side-by-side with banking apps like <b>InstaPay</b>.</sub>
+  <sub><b>2×1 Transparent Prayer Times Grid (`فجر / ظهر / مغرب | تهجد / عصر / عشاء`)</b> — displays every prayer time cleanly, highlights the upcoming prayer automatically, and runs with zero background battery drain.</sub>
 </div>
 
 ### Detailed Live Screen Captures • لقطات حية من داخل التطبيق
@@ -107,7 +107,7 @@ Mo Alarm is crafted around an **OLED-first Sanctuary Obsidian & Champagne Gold**
 
 ### 6. Home Screen & Lock Screen Widgets • ويدجت الشاشة الرئيسية وشاشة القفل
 - **2×1 Transparent 2×3 Prayer Grid Widget & Live `Chronometer` Countdown Widget** for the Android Home Screen.
-- **InstaPay-Safe Lock Screen Notification Card** without any `AccessibilityService`.
+- **Zero-Overhead Lock Screen Notification Card** without any invasive background services.
 - **Non-Destructive Transparent Lock Screen Table (`الجدول الشفاف فوق شاشة القفل`):** Composites the 2×3 prayer schedule onto your **existing** Lock Screen wallpaper—or onto a custom photo you pick from Gallery—without replacing your background with a predefined image, updating the highlighted prayer automatically at every prayer transition and restoring your original wallpaper cleanly when disabled.
 
 ### 7. Native iOS Companion App (`ios/`) • نسخة iOS الأصلية
@@ -154,11 +154,11 @@ Some phone manufacturers aggressively kill background alarm apps unless set to *
 
 ## Security & Privacy • الأمان والخصوصية
 
-Mo Alarm is audited and hardened for **maximum user privacy, banking app compatibility, and zero data leakage**:
+Mo Alarm is audited and hardened for **maximum user privacy, ultra-low battery consumption, and zero data leakage**:
 
 | Security & Privacy Area | Status in Mo Alarm |
 | :--- | :--- |
-| **InstaPay & Banking App Compatibility** | **100% Compatible.** Mo Alarm contains **zero** `AccessibilityService` (`BIND_ACCESSIBILITY_SERVICE`) declarations and **zero** screen-overlay trackers, so banking and payment apps (**InstaPay**, Google Wallet, NBE, CIB, etc.) open without restriction. |
+| **Ultra-Low Battery & Zero Invasive Services** | **Zero Background Polling.** Mo Alarm uses exact system alarm scheduling and contains **zero** `AccessibilityService` or screen-overlay trackers, keeping your phone cool and battery-efficient all day. |
 | **Personal Data & Tracking** | **Zero Analytics, Zero Ads, Zero Telemetry.** Prayer times, Adhkar counters, streaks, and GPS coordinates are computed and stored **100% locally on-device**. |
 | **Network Traffic Hardening** | `android:usesCleartextTraffic="false"` is enforced in [`AndroidManifest.xml`](app/src/main/AndroidManifest.xml). Network access is used **only** when streaming or downloading an Adhan from [`IslamwebAdhanRepository.kt`](app/src/main/java/com/moalarm/data/adhan/IslamwebAdhanRepository.kt), enforcing **HTTPS-only** connections, audio header validation, and a `25 MB` cap. |
 | **Device Backup Protection** | `android:allowBackup="false"` prevents extraction of local coordinates and preferences via unencrypted ADB backups. |
